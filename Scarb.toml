@@ -1,0 +1,15 @@
+[package]
+name = "stark_subscription"
+version = "0.1.0"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+[dependencies]
+starknet = ">=2.0.1"
+# foo = { path = "vendor/foo" }
+
+[cairo]
+sierra-replace-ids = true
+
+[[target.starknet-contract]]
+sierra = true
