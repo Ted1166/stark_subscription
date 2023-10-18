@@ -73,7 +73,8 @@ This plartform allows users to subscribe to channels on a decentralized network.
 
 * Smart contract declaration:
 
-    starkli declare target/dev/*.sierra.json --keystore  ~/.starkli-wallets/deployer/account5_keystore.json --account  ~/.starkli-wallets/deployer/account5_account.json --rpc http://0.0.0.0:5050/rpc
+    starkli declare target/dev/*.sierra.json --keystore  ~/.starkli-wallets/deployer/account5_keystore.json --account  ~/.starkli-
+  wallets/deployer/account5_account.json --rpc http://0.0.0.0:5050/rpc
 
     This generates a class-hash for deployment.
 
@@ -82,5 +83,6 @@ This plartform allows users to subscribe to channels on a decentralized network.
 
 * Deploying Smart contract:
      
-    starkli deploy 0x0678c181d8b725409837107b9f395a782b2eb86a2ba058fa8b7bf30e0c74041c --keystore  ~/.starkli-wallets/deployer/account5_keystore.json --account  ~/.starkli-wallets/deployer/account5_account.json --rpc http://0.0.0.0:5050/rp
+    starkli deploy 0x0678c181d8b725409837107b9f395a782b2eb86a2ba058fa8b7bf30e0c74041c --keystore  ~/.starkli-wallets/deployer/account5_keystore.json --account
+  ~/.starkli-wallets/deployer/account5_account.json --rpc http://0.0.0.0:5050/rp
 
