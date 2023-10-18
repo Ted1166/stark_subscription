@@ -1,3 +1,9 @@
+// Successfully deploying the Smart Contract in Starknet Devnet
+
+// The contract generated class hash is 0x04d07e40e93398ed3c76981e72dd1fd22557a78ce36c0515f679e27f0bb5bc5f
+
+// The Contract deployed on this address 0x0563fec16423ddb214a2d049396a211f72cfaa449c5f0687c44f9ba99aafa306
+
 use stark_subscription::channel::subscribe::{Packages, Msg, Subscription, ContractAddress};
 
 
