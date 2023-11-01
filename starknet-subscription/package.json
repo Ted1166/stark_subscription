@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "git": "^0.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "starknet": "^5.19.5"
+    "starknet": "^5.21.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
