@@ -1,9 +1,11 @@
 // Successfully deploying the Smart Contract in Starknet Devnet
 
 // The contract generated class hash is 0x04d07e40e93398ed3c76981e72dd1fd22557a78ce36c0515f679e27f0bb5bc5f
+// The contract class harsh declared is 0x0678c181d8b725409837107b9f395a782b2eb86a2ba058fa8b7bf30e0c74041c
+// The Contract deployed on this address 0x07a75de847786894de1d99288e867cf6e940fe61dd99b4409f9e719655e2f15c
 
-// The Contract deployed on this address 0x0563fec16423ddb214a2d049396a211f72cfaa449c5f0687c44f9ba99aafa306
-
+// starkli declare class hash 0x0148c4999a5c3849deaa04072ea6ca0fb2613ac46280d9f19156cb35a104f914
+// starkli cont0x01ed24df20fe397ad8154462d1ab959b1c4760e2368a528e3d11e80f49a25ef7
 use stark_subscription::channel::subscribe::{Packages, Msg, Subscription, ContractAddress};
 
 

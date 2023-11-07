@@ -56,14 +56,14 @@ This plartform allows users to subscribe to channels on a decentralized network.
                     "variant": {
                         "type": "open_zeppelin",
                         "version": 1,
-                        "public_key": "0x39494816e5d938c8d452bfd4d7fe3fccc5d48f6820f7d7a857c0d15c6e0cb93"
+                        "public_key": "0x5bd2fd153f33c512c972b9df7bb143ab855f978ce7b59a6bab1b09072673a7c"
                     },
                     "deployment": {
                         "status": "deployed",
-                        "class_hash": "0x046c666b2269f519820ad6337960206267546ca361aedd8feeaa8b1737c54446",
-                        "address": "0x60ade505941d6e493f48b72dbf8ef63d358667d95b3e75cceae8c45a1aa4e66"
-                    }
+                        "class_hash": "0x04d07e40e93398ed3c76981e72dd1fd22557a78ce36c0515f679e27f0bb5bc5f",
+                        "address": "0x7e5228c93ea755eb7b04e6d05d6e94b3424bd6e341c88ccbdde8217335775a5"
                 }
+}
 
             save then exit.
 
