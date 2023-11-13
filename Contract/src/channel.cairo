@@ -5,7 +5,7 @@
 // The Contract deployed on this address 0x07a75de847786894de1d99288e867cf6e940fe61dd99b4409f9e719655e2f15c
 
 // starkli declare class hash 0x0148c4999a5c3849deaa04072ea6ca0fb2613ac46280d9f19156cb35a104f914
-// starkli cont0x01ed24df20fe397ad8154462d1ab959b1c4760e2368a528e3d11e80f49a25ef7
+// starkli contract address 0x01ed24df20fe397ad8154462d1ab959b1c4760e2368a528e3d11e80f49a25ef7
 use stark_subscription::channel::subscribe::{Packages, Msg, Subscription, ContractAddress};
 
 
