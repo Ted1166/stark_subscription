@@ -10,6 +10,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
+    "starknet": "^5.19.5",
     "starknetkit": "^1.0.12",
     "web-vitals": "^2.1.4"
   },
