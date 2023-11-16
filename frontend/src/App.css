@@ -1,60 +1,56 @@
 .App {
   text-align: center;
+  background-image: url('./ui/Ade.png');
+  background-size: contain;
+  background-repeat: no-repeat; 
+  background-position: center center;
+  background-color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  50% {
+    background-position: 100% 50%;
+  }
+
+  1000% {
+    background-position: 0% 50%;
   }
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding: 20px;
 }
 
 .branding {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: #ffffff; /* White text color */
-  font-size: 24px; /* Adjust the font size as needed */
-  font-weight: bold;
+  margin-left: 20px;
 }
 
 .button-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 20px;
 }
 
-.button-container button {
-  margin-left: 10px;
+.button-container a {
+  margin-right: 20px;
 }
 
+.connect {
+  width: 120px;
+  height: 45px;
+  background: #f56342;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+}
