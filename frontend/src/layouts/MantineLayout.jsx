@@ -39,9 +39,13 @@ const MantineLayout = (props) => {
                         </Group>
                     </AppShell.Header>
                     <AppShell.Main>
-                        <Container size={'xl'} py={'lg'}>
-                        {children}
-                        </Container>
+                        {
+                            !connection ? "Connect wallet to proceed" : (
+                                <Container size={'xl'} py={'lg'}>
+                                    {children}
+                                </Container>
+                            )
+                        }
                     </AppShell.Main>
                 </AppShell>
             </ModalsProvider>
