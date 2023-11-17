@@ -19,3 +19,12 @@ starknet = "2.2.0"
 [[target.starknet-contract]]
 sierra = true
 casm = true
+[tool.sncast.account1]
+account = "account1"
+accounts-file = "/home/dalmas/.starknet_accounts/starknet_open_zeppelin_accounts.json"
+url = "http://localhost:5050/rpc"
+
+[tool.sncast.account2]
+account = "account2"
+accounts-file = "/home/dalmas/.starknet_accounts/starknet_open_zeppelin_accounts.json"
+url = "http://localhost:5050/rpc"

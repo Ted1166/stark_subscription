@@ -1,27 +1,37 @@
-import React, { useEffect } from 'react'
-import { useAppContext } from '../providers/AppProvider'
-import { bigintToShortStr } from '../config/utils'
-import BigNumber from 'bignumber.js'
+import React, { useEffect, useState } from 'react'
+import { Grid } from '@mantine/core'
+import { contract } from '../config/config'
+import SubscriptionPackage from "./../components/SubscriptionPackage"
 
 const Subscription_channel = () => {
-  const { contract } = useAppContext()
-  const getPackage = () => {
+  // const { contract } = useAppContext()
+  const [spackages, setPackages] = useState(null)
+
+  const getPackages = () => {
     if (contract) {
-      contract.get_package(1).then(res => {
-        console.log("package: ", res)
-        console.log(bigintToShortStr(res.sub_package))
-        console.log(BigNumber(res.price).toNumber())
+      contract.get_packages().then(res => {
+        setPackages(res)
       }).catch(e => {
         console.log("Error loading package:- ", e)
       })
     }
   }
+
   useEffect(() => {
-    getPackage()
+    getPackages()
   }, [])
   return (
     <div>
+      <Grid>
+        {
+          spackages?.map((package_, i) => (
+            <Grid.Col key={`package_${i}`} span={{ xs: 4, md: 3 }}>
+              <SubscriptionPackage {...package_} />
+            </Grid.Col>
 
+          ))
+        }
+      </Grid>
     </div>
   )
 }

@@ -1,12 +1,19 @@
-import { Title } from '@mantine/core';
+import { Center, Grid, Image, Stack, Title } from '@mantine/core';
 import React from 'react';
 
 const Home = () => {
   return (
     <div>
-      <Title>Title here</Title>
-      <h2>Welcome to the Home Page</h2>
-      <p>This is the home page content. Add your content here.</p>
+      <Grid>
+        <Grid.Col span={{ md: 6 }}>
+          <Stack className='h-100' justify='center'>
+            <Title>Adev</Title>
+          </Stack>
+        </Grid.Col>
+        <Grid.Col span={{ md: 6 }}>
+          <Image src={'/ui/Adev.png'} maw={'90%'} radius={'md'} />
+        </Grid.Col>
+      </Grid>
     </div>
   );
 };

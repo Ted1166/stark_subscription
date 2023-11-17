@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import svgr from '@svgr/rollup';
+// import svgr from '@svgr/rollup';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(),
-    svgr(),
+    // svgr(),
   ],
   optimizeDeps: {
-    exclude: ['ws'], // Mark "ws" as an external module
+    // exclude: ['ws'], // Mark "ws" as an external module
   },
 })

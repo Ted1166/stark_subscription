@@ -4,10 +4,11 @@ import { useForm } from '@mantine/form';
 import { useAppContext } from '../providers/AppProvider';
 import { showNotification } from '@mantine/notifications';
 import { IconAlertTriangle, IconPlus } from "@tabler/icons-react"
+import { contract } from '../config/config';
 
 const AddPackage = () => {
 
-  const { contract } = useAppContext()
+  // const { contract } = useAppContext()
 
   const form = useForm({
     initialValues: {
@@ -25,7 +26,7 @@ const AddPackage = () => {
   // key:u128, sub_package : felt252, channels : felt252, price : u128
   const handleCreatePackage = async () => {
     if (contract) {
-      const calldata = [1, form.values.title, form.values.channels, form.values.price]
+      const calldata = [form.values.title, form.values.channels, form.values.price]
       const mycall = contract.populate("add_package", calldata)
       try {
         const res = await contract.add_package(mycall.calldata)

@@ -7,26 +7,30 @@
 // starkli declare class hash 0x0148c4999a5c3849deaa04072ea6ca0fb2613ac46280d9f19156cb35a104f914
 // starkli contract address 0x01ed24df20fe397ad8154462d1ab959b1c4760e2368a528e3d11e80f49a25ef7
 use stark_subscription::channel::subscribe::{Packages, Msg, Subscription, ContractAddress};
+use core::array::ArrayTrait;
 
 
 #[starknet::interface]
 trait subscribeTrait<TContractState> {
-    fn add_package(ref self:TContractState, key:u128, sub_package : felt252, channels : felt252, price : u128);
+    fn add_package(ref self:TContractState, sub_package : felt252, channels : felt252, price : u128);
     fn get_package(self:@TContractState, key:u128) -> Packages;
     fn subs_package(ref self:TContractState, package_id : u128, user : ContractAddress, key:u128, message_key:u128);
     fn get_message(self:@TContractState, key:u128) -> Msg;
+    fn get_packages(self: @TContractState) -> Array<Packages>;
     }
 
 #[starknet::contract]
 mod subscribe {
 
-    use starknet::ContractAddress;
+    use core::array::ArrayTrait;
+use starknet::ContractAddress;
     use starknet::get_caller_address;
     use core::debug::PrintTrait;
 
     #[storage]
     struct Storage {
         packages : LegacyMap::<u128, Packages>,
+        packages_count: u128,
         subscriptions: LegacyMap::<u128, Subscription>,
         messages: LegacyMap::<u128, Msg>
     }
@@ -53,9 +57,11 @@ mod subscribe {
 
     #[external(v0)]
     impl subscribeImpl of super::subscribeTrait<ContractState> {
-        fn add_package(ref self:ContractState, key:u128, sub_package : felt252, channels : felt252, price : u128) {
-            let new_package = Packages{sub_package:sub_package, channels:channels, price:price, package_id:key};
-            self.packages.write(key, new_package);
+        fn add_package(ref self:ContractState, sub_package : felt252, channels : felt252, price : u128) {
+            let key_ = self.packages_count.read() + 1;
+             let new_package = Packages{sub_package:sub_package, channels:channels, price:price, package_id:key_};
+            self.packages.write(key_, new_package);
+            self.packages_count.write(key_);
         }
 
         fn get_package(self:@ContractState,key:u128) -> Packages{
@@ -73,6 +79,24 @@ mod subscribe {
 
         fn get_message(self:@ContractState, key:u128) -> Msg {
             self.messages.read(key)
+        }
+
+        fn get_packages(self: @ContractState) -> Array<Packages> {
+            let mut packages = ArrayTrait::<Packages>::new();
+            let total_packages = self.packages_count.read();
+            let mut count = 1;
+
+            if total_packages > 0{
+                loop {
+                    let package = self.packages.read(count);
+                    packages.append(package);
+                    count +=1;
+                    if(count > total_packages){
+                        break;
+                    }
+                }
+            }
+            packages
         }
     }
 }
@@ -101,7 +125,7 @@ mod tests {
         let channels = '1,2,3';
         let price = 1000;
 
-        contract.add_package(key:1,sub_package:sub_package,channels:channels,price:price);
+        contract.add_package(sub_package:sub_package,channels:channels,price:price);
 
 
         let package_sent = contract.get_package(1);
@@ -120,7 +144,7 @@ mod tests {
         let channels = '1,2,3';
         let price = 1000;
 
-        contract.add_package(key:1,sub_package:sub_package,channels:channels,price:price);
+        contract.add_package(sub_package:sub_package,channels:channels,price:price);
 
         contract.subs_package(package_id : 1, user : user, key:1, message_key:1);
 
