@@ -10,6 +10,7 @@ import History from "./pages/History";
 import MantineLayout from "./layouts/MantineLayout";
 import AppProvider from './providers/AppProvider';
 import AddPackage from './pages/AddPackage';
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/subscription_channel" element={<Subscription_channel />} />
               <Route path="/add-package" element={<AddPackage />} />
               <Route path="/history" element={<History />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<Not_found />} />
             </Routes>
           </MantineLayout>

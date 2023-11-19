@@ -1,5 +1,6 @@
 import { Center, Grid, Image, Stack, Title } from '@mantine/core';
 import React from 'react';
+import { Text } from '@mantine/core';
 
 const Home = () => {
   return (
@@ -10,8 +11,8 @@ const Home = () => {
         </Grid.Col>
       
         <Grid.Col span={{ md: 6 }}>
-          <Stack className='h-100' justify='center'>
-            <h1>Welcome to ADEV FUNTIME - Your Gateway to Endless Entertainment! 
+          <Stack className='h-100' justify='center' fz='sm'>
+            <h1 >Welcome to ADEV FUNTIME - Your Gateway to Endless Entertainment! 
               Subscribe to an array of captivating channels curated by talented content creators. 
               Dive into a world of diverse content, from thrilling adventures to insightful discussions. 
               Discover, subscribe, and immerse yourself in a universe of entertainment tailored just for 

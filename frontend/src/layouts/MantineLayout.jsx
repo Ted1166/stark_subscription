@@ -21,19 +21,20 @@ const MantineLayout = (props) => {
                     <AppShell.Header >
                         <Group px={"lg"} className='h-100' justify='space-between'>
                             <Group>
-                                <Image src={'/ui/Ade.png'} mah={'60px'} radius={'md'} />
-                                <Title fw={500}>ADEV</Title>
+                                <Image src={'/ui/Ade.png'} mah={'40px'} radius={'md'} />
+                                <Title fw={400}>ADEV</Title>
                             </Group>
                             <Group className='h-100' justify='right'>
                                 <Button variant='light' component={Link} to={'/'} radius={"md"} size='md'>Home</Button>
                                 <Button variant='light' component={Link} to={'/subscription_channel'} radius={"md"} size='md'>Subscription Channel</Button>
                                 <Button variant='light' component={Link} to={'/add-package'} radius={"md"} size='md'>Add Package</Button>
                                 <Button variant='light' component={Link} to={'/history'} radius={"md"} size='md'>History</Button>
+                                <Button variant='light' component={Link} to={'/profile'} radius={"md"} size='md'>Profile</Button>
                                 {
                                     connection ?
-                                        <Button radius={"xl"} onClick={handleConnetWalletBtnClick}>Disconnect wallet</Button>
+                                        <Button radius={"xl"} onClick={handleConnetWalletBtnClick}>LOGOUT</Button>
                                         :
-                                        <Button radius={"xl"} color='green' onClick={handleConnetWalletBtnClick}>Connect wallet</Button>
+                                        <Button radius={"xl"} color='green' onClick={handleConnetWalletBtnClick}>LOGIN</Button>
                                 }
                             </Group>
                         </Group>
@@ -41,7 +42,7 @@ const MantineLayout = (props) => {
                     <AppShell.Main>
                         {
                             !connection ? "Connect wallet to proceed" : (
-                                <Container size={'xl'} py={'lg'}>
+                                <Container size={'xl'} py={'lg'} justify='center'>
                                     {children}
                                 </Container>
                             )
