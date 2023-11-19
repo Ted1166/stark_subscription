@@ -1,8 +1,8 @@
 // Successfully deploying the Smart Contract in Starknet Devnet
 
 // The contract generated class hash is 0x04d07e40e93398ed3c76981e72dd1fd22557a78ce36c0515f679e27f0bb5bc5f
-// The contract class harsh declared is 0x0678c181d8b725409837107b9f395a782b2eb86a2ba058fa8b7bf30e0c74041c
-// The Contract deployed on this address 0x07a75de847786894de1d99288e867cf6e940fe61dd99b4409f9e719655e2f15c
+// The contract class harsh declared is 0x04c29bca3d6ccbbf7d16e1611bc1774d7769aee3b66c4269b7e2bc53e3e182bf
+// The Contract deployed on this address 0x01e020b6fde09f00c338c243b3b2469c6556786c4448951f18537b24ddba9bbd
 
 // starkli declare class hash 0x0148c4999a5c3849deaa04072ea6ca0fb2613ac46280d9f19156cb35a104f914
 // starkli contract address 0x01ed24df20fe397ad8154462d1ab959b1c4760e2368a528e3d11e80f49a25ef7
@@ -153,3 +153,14 @@ mod tests {
     }
 
 }
+
+
+
+
+
+
+
+// Account #2:
+// Address: 0x45387bf30f69b713c9777f9331f209216fec0cc262c0c3a05a22d34d9024706
+// Public key: 0x489549486368950820e896ce81972ff1c52ba0349688c416c64784927a46258
+// Private key: 0x6e0dedd76b71dee7398355169a7d3def

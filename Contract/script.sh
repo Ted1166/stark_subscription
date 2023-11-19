@@ -11,10 +11,10 @@ MULTICALL_FILE="multicall.toml"
 FAILED_TESTS=false
 
 # Addresses and Private keys as environment variables
-ACCOUNT1_ADDRESS=${ACCOUNT1_ADDRESS:-"0x44a540b543a4e9ebede6c40ddfb3ec8a37432e4fd4aeb1c7256734422265783"}
-ACCOUNT2_ADDRESS=${ACCOUNT2_ADDRESS:-"0x6e24dba6fc485c22834f7bcd7a310bf3686337c09be53c002e838c03c825987"}
-ACCOUNT1_PRIVATE_KEY=${ACCOUNT1_PRIVATE_KEY:-"0x96d8cb314122f5873683b5e5048b5fec"}
-ACCOUNT2_PRIVATE_KEY=${ACCOUNT2_PRIVATE_KEY:-"0x1ae2058a8d0d4c44a31625094a53a8f5"}
+ACCOUNT1_ADDRESS=${ACCOUNT1_ADDRESS:-"0x1f836f98f1f9d3ec36decffda5a23ceb2bb34a89d9ea46cc0f36113b23614b2"}
+ACCOUNT2_ADDRESS=${ACCOUNT2_ADDRESS:-"0x3517339dc64b1801fdb9cac15e60486e9303f1dea1a1b1d046218083e626aa"}
+ACCOUNT1_PRIVATE_KEY=${ACCOUNT1_PRIVATE_KEY:-"0xfb5835e3100d1a88dabe476752c5f9b1"}
+ACCOUNT2_PRIVATE_KEY=${ACCOUNT2_PRIVATE_KEY:-"0xa9a6f8c8615b01a330ddb81e2ccfc731"}
 
 # Utility function to log messages
 function log_message() {
@@ -82,8 +82,8 @@ if [ "$FAILED_TESTS" != "true" ]; then
     echo $declaration_output
     if echo "$declaration_output" | grep -q "error: Class with hash"; then
         echo "Class hash already declared."
-        # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p')
-        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p')
+        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p')
+        # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p')
     else
         echo "New class hash declaration."
         CLASS_HASH=$(echo "$declaration_output" | grep -o 'class_hash: 0x[^ ]*' | sed 's/class_hash: //')
