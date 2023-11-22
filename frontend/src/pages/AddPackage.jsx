@@ -1,14 +1,14 @@
 import React from 'react'
 import { Box, Button, Card, Grid, Group, NumberInput, TextInput, Title } from "@mantine/core"
 import { useForm } from '@mantine/form';
-import { useAppContext } from '../providers/AppProvider';
+import {useAppContext} from '../providers/AppProvider';
 import { showNotification } from '@mantine/notifications';
 import { IconAlertTriangle, IconPlus } from "@tabler/icons-react"
-import { contract } from '../config/config';
+// import { contract } from '../config/config';
 
 const AddPackage = () => {
 
-  // const { contract } = useAppContext()
+  const { contract } = useAppContext()
 
   const form = useForm({
     initialValues: {

@@ -4,9 +4,9 @@
 // The contract class harsh declared is 0x04c29bca3d6ccbbf7d16e1611bc1774d7769aee3b66c4269b7e2bc53e3e182bf
 // The Contract deployed on this address 0x01e020b6fde09f00c338c243b3b2469c6556786c4448951f18537b24ddba9bbd
 
-// starkli declare class hash 0x0148c4999a5c3849deaa04072ea6ca0fb2613ac46280d9f19156cb35a104f914
-// starkli contract address 0x01ed24df20fe397ad8154462d1ab959b1c4760e2368a528e3d11e80f49a25ef7
-use stark_subscription::channel::subscribe::{Packages, Msg, Subscription, ContractAddress};
+// starkli declare class hash 0x04c29bca3d6ccbbf7d16e1611bc1774d7769aee3b66c4269b7e2bc53e3e182bf
+// starkli contract address 0x053c42c0e04c754750f79b8f64fcacb2eceb012b303643ad6ba510b6d04fbafb
+use stark_subscription::channel::Subscribe::{Packages, Msg, Subscription, ContractAddress};
 use core::array::ArrayTrait;
 
 
@@ -20,10 +20,10 @@ trait subscribeTrait<TContractState> {
     }
 
 #[starknet::contract]
-mod subscribe {
+mod Subscribe {
 
     use core::array::ArrayTrait;
-use starknet::ContractAddress;
+    use starknet::ContractAddress;
     use starknet::get_caller_address;
     use core::debug::PrintTrait;
 
@@ -104,17 +104,22 @@ use starknet::ContractAddress;
 #[cfg(test)]
 mod tests {
     use stark_subscription::channel::subscribeTraitDispatcherTrait;
-    use super::subscribe;
+    // use super::subscribe;
     use super::subscribeTraitDispatcher;
     use core::array::ArrayTrait;
     use starknet::{ContractAddress,contract_address_const};
-    use starknet::deploy_syscall;
     use core::debug::PrintTrait;
+    use snforge_std::{declare, ContractClassTrait};
+
 
     fn deploy() -> subscribeTraitDispatcher {
-        let mut calldata: Array<felt252> = ArrayTrait::new();
-        let (address0, _) = deploy_syscall(subscribe::TEST_CLASS_HASH.try_into().unwrap(), 0, calldata.span(), false).unwrap();
-        subscribeTraitDispatcher { contract_address: address0}
+        // let mut calldata: Array<felt252> = ArrayTrait::new();
+        // let (address0, _) = deploy_syscall(subscribe::TEST_CLASS_HASH.try_into().unwrap(), 0, calldata.span(), false).unwrap();
+        // subscribeTraitDispatcher { contract_address: address0}
+        let contract = declare('Subscribe');
+        let contract_address = contract.deploy(@ArrayTrait::new()).unwrap();
+        // Create a Dispatcher object for interaction with the deployed contract
+        subscribeTraitDispatcher { contract_address }
     }
 
     #[test]
@@ -125,8 +130,7 @@ mod tests {
         let channels = '1,2,3';
         let price = 1000;
 
-        contract.add_package(sub_package:sub_package,channels:channels,price:price);
-
+        contract.add_package(sub_package,channels,price);
 
         let package_sent = contract.get_package(1);
 
@@ -144,9 +148,9 @@ mod tests {
         let channels = '1,2,3';
         let price = 1000;
 
-        contract.add_package(sub_package:sub_package,channels:channels,price:price);
+        contract.add_package(sub_package,channels,price);
 
-        contract.subs_package(package_id : 1, user : user, key:1, message_key:1);
+        contract.subs_package(1, user,1,1);
 
         let message = contract.get_message(1);
         assert(message.msg == 'Subscription successful', 'Message');
