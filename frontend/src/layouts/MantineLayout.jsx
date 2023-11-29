@@ -28,8 +28,6 @@ const MantineLayout = (props) => {
                                 <Button variant='light' component={Link} to={'/'} radius={"md"} size='md'>Home</Button>
                                 <Button variant='light' component={Link} to={'/subscription_channel'} radius={"md"} size='md'>Subscription Channel</Button>
                                 <Button variant='light' component={Link} to={'/add-package'} radius={"md"} size='md'>Add Package</Button>
-                                <Button variant='light' component={Link} to={'/history'} radius={"md"} size='md'>History</Button>
-                                <Button variant='light' component={Link} to={'/profile'} radius={"md"} size='md'>Profile</Button>
                                 {
                                     connection ?
                                         <Button radius={"xl"} onClick={handleConnetWalletBtnClick}>LOGOUT</Button>
