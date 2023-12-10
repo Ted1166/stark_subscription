@@ -12,6 +12,7 @@ use core::array::ArrayTrait;
 
 #[starknet::interface]
 trait subscribeTrait<TContractState> {
+    fn get_asset_price(self: @TContractState, asset_id: felt252) -> u128;
     fn add_package(ref self:TContractState, sub_package : felt252, channels : felt252, price : u128);
     fn get_package(self:@TContractState, key:u128) -> Packages;
     fn subs_package(ref self:TContractState, package_id : u128, user : ContractAddress, key:u128, message_key:u128);
@@ -26,13 +27,30 @@ mod Subscribe {
     use starknet::ContractAddress;
     use starknet::get_caller_address;
     use core::debug::PrintTrait;
+    use pragma_lib::abi::{
+            IPragmaABIDispatcher, IPragmaABIDispatcherTrait, ISummaryStatsABIDispatcher,
+            ISummaryStatsABIDispatcherTrait};
+    use pragma_lib::types::{DataType, AggregationMode, PragmaPricesResponse};
+    use alexandria_math::pow;
+
+    const ETH_USD: felt252 = 19514442401534788;  //ETH/USD to felt252, can be used as asset_id
+    const BTC_USD: felt252 = 18669995996566340;  //BTC/USD
 
     #[storage]
     struct Storage {
         packages : LegacyMap::<u128, Packages>,
         packages_count: u128,
         subscriptions: LegacyMap::<u128, Subscription>,
-        messages: LegacyMap::<u128, Msg>
+        messages: LegacyMap::<u128, Msg>,
+        pragma_contract: ContractAddress,
+        summary_stats: ContractAddress
+    }
+
+    #[constructor]
+    fn constructor(ref self: ContractState, pragma_address: ContractAddress, summary_stats_address : ContractAddress) 
+    {
+        self.pragma_contract.write(pragma_address);
+        self.summary_stats.write(summary_stats_address);
     }
 
     #[derive(Copy, Drop, Serde, starknet::Store)]
@@ -57,6 +75,20 @@ mod Subscribe {
 
     #[external(v0)]
     impl subscribeImpl of super::subscribeTrait<ContractState> {
+
+        fn get_asset_price(self: @ContractState, asset_id: felt252) -> u128 {
+            // Retrieve the oracle dispatcher
+            let oracle_dispatcher = IPragmaABIDispatcher {
+                contract_address: self.pragma_contract.read()
+            };
+
+            // Call the Oracle contract, for a spot entry
+            let output: PragmaPricesResponse = oracle_dispatcher
+                .get_data_median(DataType::SpotEntry(asset_id));
+
+            return output.price;
+        }
+
         fn add_package(ref self:ContractState, sub_package : felt252, channels : felt252, price : u128) {
             let key_ = self.packages_count.read() + 1;
              let new_package = Packages{sub_package:sub_package, channels:channels, price:price, package_id:key_};
