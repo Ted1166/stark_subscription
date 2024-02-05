@@ -41,8 +41,8 @@ source = "git+https://github.com/astraly-labs/pragma-lib#24bb4da111ae7eb00e7cf40
 
 [[package]]
 name = "snforge_std"
-version = "0.1.0"
-source = "git+https://github.com/foundry-rs/starknet-foundry.git?tag=v0.10.1#2f1597fb724b7df3050468bd0e6a8a3a0e225001"
+version = "0.16.0"
+source = "git+https://github.com/foundry-rs/starknet-foundry.git?tag=v0.16.0#f58e0ab42b6095b7d0cb841ede595aecbc9cb45d"
 
 [[package]]
 name = "stark_subscription"
